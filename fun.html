@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		function al(us1, us2) {
+			var x = Math.floor(Math.random()*100+1);
+			alert (x);	//выводим х для быстрой проверки. Можно убрать
+			
+			var n = 1;	// Счетчик угадайки
+			var user = us1;	// вводим эту переменную, чтобы уменьшить в два раза тело цикла
+			do
+			{
+				var usn = +prompt(user+', введите число:');
+				if (usn == x)
+					alert (user+', поздравляю! Вы отгадали Х после '+Math.floor(n)+' попыток. Игра окончена.');	
+					else 
+					{	if (usn>x) {alert('Неверно! '+usn+' больше Х');} 
+						else {alert('Неверно! '+usn+' меньше Х');}
+						n=n+0.5;	//За 1 цикл проходит 1 игрок, а я хочу чтобы n считало количество индивидуальных, а не общих попыток
+						if (user == us1) {user = us2;} else {user = us1;}	//переходим к следующему юзеру
+					}
+			}
+			while (usn != x)
+		}
+		
+	</script>
+</head>
+<body>
+	<p>Сейчас мы сыграем в игру для двух пользователей. Компьютер загадывает произвольное целое число (Х) от 1 до 100. Ваша задача его угадать. После каждого воода будет дана подсказка: больше или меньше введенное число, чем Х. Кто угадает первый, тот и победил</p>
+	<p>Игрок 1: <input type="text" id="us1"></p>
+	<p>Игрок 2: <input type="text" id="us2"></p>
+	<input type="button" value="Press!" onclick="al(us1.value,us2.value)" >
+</body>
+</html>
