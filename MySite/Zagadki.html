@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Загадки</title>
+	<link rel="stylesheet" href="style.css">
+	<script>
+		function Zagadki(a,b,c,d){
+			if (a == 'Піонерка в червоній хустинці'|| a =='я')
+				var n=1;
+				else var n=0;
+			if (b =='Фашистський літак' || b =='я')
+				n++;
+			if (c == 'Радянський літак' || c =='я')
+				n++;
+			if (d == 'Гєббєльс' || d =='я')
+				n++;
+			return n
+		}
+	</script>
+</head>
+<body>
+	<div id="header">
+		<a id="selected" href="index.html">Главная</a><span>/</span>
+		<a href="#">Загадки</a><span>/</span>
+		<a href="Ugaday.html">Угадайка</a><span>/</span>
+		<a href="Ugadaym.html">Угадайка мультиплеер</a>
+	</div>
+	<div id="content">
+	<div id="game">
+		<h1>Загадки</h1>
+		1. Не буряк, не морковка, а червона головка. Шо це? <br>
+		<p>Відповідь: <input type="text" id="a"></p>
+		2. Орел літає, смерттю засіває, шо це?! <br>
+		<p>Відповідь: <input type="text" id="b"></p> 
+		3. Орел літає, людей визволяє, шо це?! <br>
+		<p>Відповідь: <input type="text" id="c"></p> 
+		4. Сичав-сичав та й замовк, визира з нори як вовк, шо це?! <br>
+		<p>Відповідь: <input type="text" id="d"></p> 
+		<p><input type="button" value="Ответить!" onclick=" Rez.value = Zagadki(a.value,b.value,c.value,d.value)"></p>
+		<p>Количество правильных ответов: <input type="text" id="Rez"></p>
+	</div>
+	</div>
+	<div id="footer">
+		Copyright © 2016 <a href="https://geekbrains.ru/" target="_blank">GeekBrains</a>
+	</div>
+</body>
+</html>
