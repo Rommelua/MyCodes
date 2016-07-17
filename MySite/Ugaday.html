@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Угадайка</title>
+	<link rel="stylesheet" href="style.css">
+	<script>
+		function Ugaday(){
+			var x = Math.floor(Math.random()*100+1);
+			alert (x);	//выводим х для быстрой проверки. Можно убрать			
+			var n = 1;	// Счетчик угадайки
+			do{
+				var a = +prompt('Введите число');
+				if (a == x)
+					alert ('Поздравляю! Вы отгадали Х после '+n+' попыток. Игра окончена.');	
+					else 
+						if (a>x) alert('Неверно! '+a+' больше Х'); 
+						else alert('Неверно! '+a+' меньше Х');
+				n++;
+			}
+			while (a != x)
+		}
+	</script>
+</head>
+<body>
+	<div id="header">
+		<a id="selected" href="index.html">Главная</a><span>/</span>
+		<a href="Zagadki.html">Загадки</a><span>/</span>
+		<a href="#">Угадайка</a><span>/</span>
+		<a href="Ugadaym.html">Угадайка мультиплеер</a>
+	</div>
+	<div id="content">
+		<h1>Угадайка</h1>
+		<div id="game">
+			<p>Компьютер загадывает произвольное целое число (x) от 1 до 100. Ваша задача его угадать. После каждого ввода будет дана подсказка: больше или меньше введенное число, чем x. </p>
+			<center>
+			<p><input type="button" value="Играть!" onclick="Ugaday()"></p>	</center>
+		</div>	
+	</div>
+	<div id="footer">
+		Copyright © 2016 <a href="https://geekbrains.ru/" target="_blank">GeekBrains</a>
+	</div>
+</body>
+</html>

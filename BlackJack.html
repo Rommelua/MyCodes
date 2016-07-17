@@ -1,0 +1,95 @@
+<meta charset="utf-8">
+<script>
+	var cards = ['6','7','8','9','10','J','Q','K','A'];
+	var points = [6,7,8,9,10,2,3,4];
+
+	function getRandomInt(min, max){
+		return Math.floor(Math.random()*(max-min+1)+min);
+	}
+
+	function getCard(){
+		return cards[getRandomInt(0, cards.length -1)];
+	}
+
+	function getStatus(){
+		return 'Диллер: ' + dealer.join(' ') + " Игрок: " + player.join(' ')+'.';
+	}
+
+	function getSum(hand){
+		var s = 0;
+		var A = 0;
+		for (var i = 0; i < hand.length; i++) {
+			if (hand[i] == 'A') {
+				A++;
+			}
+				else { 
+					for (var k = 0; k < points.length; k++) {
+						if (hand[i] == cards[k]) 
+						s = s + points[k];
+					}
+				}
+				// 	if (hand[i] == 'J' || hand[i] == 'Q' || hand[i] == 'K') 
+				// 		s = s + 10;
+				// 		else s = s + Number(hand[i]);
+				// }
+		}
+		if ((A>=2) && (A!=0)) {
+			s = s+A-1;
+			A = 1;
+		}
+		if (A == 0) return s;
+			else {
+				if (s <= 10) s = s+11;
+					else s++;
+				return s;
+			}
+	}
+
+	var dealer = [getCard()];
+	var player = [getCard(), getCard()];
+	//player = ['K','A'];
+	var ansver = '';
+
+	if (getSum(player) == 21) {
+		alert('Дьявольское везение! Блек Джек на раздаче! $_$'); 
+	}
+		else {
+			do{
+				ansver = prompt(getStatus() + ' Хотите еще карту? 1 - да, иначе - нет.');
+				if (ansver == '1') player.push(getCard());
+				if (getSum(player) > 21) {
+					alert(getStatus()+' Количество ваших очков: '+getSum(player)+' - перебор. Вы проиграли...');
+					break
+				} 
+					else {
+						if (getSum(player) == 21) {
+							alert(getStatus()+' Блек Джек! Вы выиграли!');
+							break
+						}
+					}
+			} while (ansver == '1');
+		}
+
+	if (getSum(player)<21) {
+		do{
+			dealer.push(getCard());
+			if (getSum(dealer) > 21) {
+				alert(getStatus()+' У Диллера перебор. Вы выиграли!');
+				break
+			} 
+			else {
+				if (getSum(dealer) == 21) {
+					alert(getStatus()+' У Диллера Блек Джек. Вы проиграли...');
+					break
+				}
+			}
+		} while (getSum(dealer) < getSum(player));
+	}
+	if (getSum(dealer) > getSum(player) && (getSum(dealer)< 21)){
+		alert(getStatus()+' Вы проиграли...');
+	}
+		else { if (getSum(dealer) == getSum(player))
+				alert(getStatus()+' Ничья!');
+		}
+	//alert('Текущая сумма карт у игрока: ' + getSum(player));
+</script>
